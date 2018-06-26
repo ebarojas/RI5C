@@ -1,0 +1,4 @@
+*.pyc
+config/
+.vagrant/
+*.DS_Store

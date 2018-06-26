@@ -1,0 +1,39 @@
+# django
+Django==1.11.11
+
+# Heroku
+gunicorn==19.7.1
+dj-database-url==0.5.0
+whitenoise==3.3.1
+psycopg2-binary==2.7.4
+
+# DRF
+django-filter==1.1.0
+Markdown==2.6.11
+djangorestframework==3.7.7
+
+# crypto
+pycrypto==2.6.1
+rsa==3.4.2
+merkletools==1.0.2
+pysha3==1.0b1
+
+# Others
+django-jet==1.0.7
+
+#QRCode
+Pillow==4.2.1
+qrcode==5.3
+
+# Proof of Existence (ETH)
+bitcoin==1.1.39
+blockcypher==1.0.73
+python-dateutil==2.2
+
+# Redis
+redis==2.10.6
+rq==0.9.2
+django-redis==4.8.0
+django-rq==1.0.0
+
+# Network theory
