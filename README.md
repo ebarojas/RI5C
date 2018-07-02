@@ -14,3 +14,8 @@ vagrant ssh
 $ cd /vagrant/
 $ python ?
 ```
+### Load data
+Here a contract address should be specified ```0x...```
+
+### Evaluate
+Where the magic will happen – we extract transactions, model the network and provide an analysis.
