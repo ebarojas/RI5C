@@ -3,7 +3,9 @@
 echo "=> Start config box..."
 sudo apt-get update
 sudo apt-get install -y build-essential libssl-dev wget python-pip python-dev libffi-dev
+sudo apt-get install -y git
 sudo pip install -U pip
+sudo pip install -U pyOpenSSL
 
 # Install PostgreSQL
 echo "=> Installing postgresql"
