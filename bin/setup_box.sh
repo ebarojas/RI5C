@@ -10,7 +10,7 @@ sudo pip install -U pyOpenSSL
 # Install PostgreSQL
 echo "=> Installing postgresql"
 sudo apt-get install -y libpq-dev postgresql postgresql-contrib libxml2-dev libxslt1-dev zlib1g-dev build-essential libssl-dev libffi-dev
-# Create database if not exist
+# Create database if it doesn't exist
 sudo -i -u postgres psql -tc "SELECT 1 FROM pg_database WHERE datname = 'mydb'" | grep -q 1 || sudo -i -u postgres psql -c "CREATE DATABASE mydb"
 
 # Create user
