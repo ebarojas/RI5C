@@ -10,7 +10,7 @@ class DBManager(object):
         self.db = records.Database(DATABASE_URL)
         # self.model = self.db
 
-
+    # TODO: Need to change age to timestamp and amount to value – this code is not very DRY.
     def create_tx_table(self):
         self.db.query('CREATE TABLE transactions (id SERIAL PRIMARY KEY, \
             txid text, \
