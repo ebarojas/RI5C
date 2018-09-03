@@ -19,10 +19,11 @@ class Transaction(object):
             db = DBManager()
             db = db.get_db()
             # This line doesn't work - need to input the text.
-            db.query("INSERT INTO transactions (txid, block, amount, tx_to, tx_from, age) \
-                VALUES (:txid, :block, :amount, :tx_to, :tx_from, :age)", \
-                txid=tx['txid'], block=tx['block'], amount=tx['amount'], tx_to=tx['tx_to'], \
-                tx_from=tx['tx_from'], age=tx['age'])
+            # This needs binding with object and rest of shite
+            db.query("INSERT INTO transactions (txid, block, value, tx_to, tx_from, timestamp) \
+                VALUES (:txid, :block, :value, :tx_to, :tx_from, :timestamp)", \
+                txid=tx['txid'], block=tx['block'], value=tx['value'], tx_to=tx['tx_to'], \
+                tx_from=tx['tx_from'], timestamp=tx['timestamp'])
 
         except Exception as error:
             print("Could not create tx", error)

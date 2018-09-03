@@ -10,19 +10,20 @@ class DBManager(object):
         self.db = records.Database(DATABASE_URL)
         # self.model = self.db
 
-    # TODO: Need to change age to timestamp and amount to value – this code is not very DRY.
+    # TODO: Need to change age to timestamp and amount to value - this code is not very DRY.
     def create_tx_table(self):
         self.db.query('CREATE TABLE transactions (id SERIAL PRIMARY KEY, \
             txid text, \
             block text, \
-            amount text, \
+            value text, \
             tx_to text, \
             tx_from text, \
-            age text\
+            timestamp text\
         )')
 
     def drop_table(self, table):
-        db.query("DROP TABLE 'table' CASCADE")
+        # THIS doesn't work [WIP], can't escape string adequately
+        self.db.query("DROP TABLE :table CASCADE", table=table)
 
     def get_db(self):
         return self.db
