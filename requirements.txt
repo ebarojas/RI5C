@@ -38,6 +38,11 @@ Pillow==4.2.1
 decorator==4.3.0
 networkx==2.1
 
+# Data science
+numpy==1.15.2
+pandas==0.23.4
+python-dateutil==2.7.3
+
 # Google Cloud Big query
 certifi==2018.8.24 
 chardet==3.0.4
