@@ -24,7 +24,7 @@ psql -d mydb
 ```
 
 ### Configuring BigQuery
-Note that this software uses Google's BigQuery Ethereum dataset, based on the fantastic work found in this repo https://github.com/blockchain-etl/ethereum-etl.
+Note that this software uses Google's BigQuery Ethereum dataset, based on the fantastic work found of Evgeny Medvedev: https://github.com/blockchain-etl/ethereum-etl.
 
 You should activate a BigQuery account following these instructions: https://cloud.google.com/blog/products/data-analytics/ethereum-bigquery-public-dataset-smart-contract-analytics
 
