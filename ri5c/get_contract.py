@@ -19,6 +19,11 @@ def get_contract(contract_address):
     """ % contract_address
     # Connect
     bql = bigquery.Client()
+    # Query
+    query_job = bql.query(test_query)
+    iterator = query_job.result(timeout=30)
+    rows = list(iterator)
+
     # Collect
     # Save
     pass

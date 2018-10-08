@@ -1,10 +1,3 @@
-# django
-Django==1.11.11
-
-# Heroku # Probably not needed for this
-gunicorn==19.7.1
-whitenoise==3.3.1
-
 # PSQL
 dj-database-url==0.5.0
 psycopg2-binary==2.7.4
@@ -25,7 +18,7 @@ django-filter==1.1.0
 Markdown==2.6.11
 djangorestframework==3.7.7
 
-# crypto
+# Crypto
 pycrypto==2.6.1 # Potential vulnerability, probably not relevant for this implementation
 rsa==3.4.2
 merkletools==1.0.2
@@ -44,7 +37,7 @@ pandas==0.23.4
 python-dateutil==2.7.3
 
 # Google Cloud Big query
-certifi==2018.8.24 
+certifi==2018.8.24
 chardet==3.0.4
 futures==3.2.0
 google-api-core==1.4.1
