@@ -25,6 +25,7 @@ def get_contract(contract_address):
     rows = list(iterator)
 
     # Collect
+    # How do I create the network? – how do i assign elements?  
     # Save
     pass
 
