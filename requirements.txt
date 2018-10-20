@@ -15,7 +15,6 @@ records==0.5.2
 
 # Crypto
 pycrypto==2.6.1 # Potential vulnerability, probably not relevant for this implementation
-rsa==3.4.2
 merkletools==1.0.2
 pysha3==1.0b1
 
