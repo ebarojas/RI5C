@@ -25,6 +25,14 @@ Pillow==4.2.1
 decorator==4.3.0
 networkx==2.1
 
+# Plotting
+backports.functools-lru-cache==1.5
+cycler==0.10.0
+kiwisolver==1.0.1
+matplotlib==2.2.3
+pyparsing==2.3.0
+subprocess32==3.5.3
+
 # Data science
 numpy==1.15.2
 pandas==0.23.4
