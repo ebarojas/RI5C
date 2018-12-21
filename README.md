@@ -57,5 +57,5 @@ bct = "0xf5839f46ed000d70cbab1fcd03e29e85f3aecd82"
 ```
 
 ## Room to grow
-Feel free to collaborate, fork and grow. This code is open source, check [the license](../blob/master/LICENSE)
+Feel free to collaborate, fork and grow. This code is open source, check [the license](/master/LICENSE)
 
