@@ -18,9 +18,6 @@ pycrypto==2.6.1 # Potential vulnerability, probably not relevant for this implem
 merkletools==1.0.2
 pysha3==1.0b1
 
-#QRCode
-Pillow==4.2.1
-
 # Network theory
 decorator==4.3.0
 networkx==2.1
