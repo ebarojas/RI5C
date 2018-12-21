@@ -15,8 +15,6 @@ vagrant ssh
 $ cd /vagrant/
 $ python # To run a console
 ```
-## Load data
-Here a contract address should be specified ```0x...```
 
 Database created is called "mydb", to load psql console type:
 ```
@@ -32,5 +30,16 @@ and you should have your access info in ```ri5c/config/big_query_cred.json```
 
 PS: the location of that file is specified in an environment variable called ```GOOGLE_APPLICATION_CREDENTIALS```
 
-## Evaluate
-Where the magic will happen – we extract transactions, model the network and provide an analysis.
+
+## Load data and Evaluate
+Find an interesting contract: ([OmiseGo](https://omisego.network)) ```omisego = "0xd26114cd6ee289accf82350c8d8487fedb8a0c07"```
+
+And now, from Python console run:
+
+```from ri5c.get_contract import network_this```
+
+```network_this(omisego, limit=3000)```
+
+Where *limit* is the transaction limit.
+
+This will save an image called *network.png* in your source folder.
