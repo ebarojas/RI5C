@@ -24,6 +24,7 @@ Pillow==4.2.1
 # Network theory
 decorator==4.3.0
 networkx==2.1
+python-louvain==0.12
 
 # Plotting
 backports.functools-lru-cache==1.5
