@@ -100,14 +100,6 @@ def network_this(contract, limit=1000):
     print "Success"
     pass
 
-'''
-# TRY
-from ri5c.get_contract import network_this
-omisego = "0xd26114cd6ee289accf82350c8d8487fedb8a0c07"
-cryptokitties = "0x06012c8cf97bead5deae237070f9587f8e7a266d"
-bct = "0xf5839f46ed000d70cbab1fcd03e29e85f3aecd82"
-network_this("0xf5839f46ed000d70cbab1fcd03e29e85f3aecd82", 3000)
-'''
 
 # query_params = [
 #     bigquery.ScalarQueryParameter('gender', 'STRING', 'M'),
