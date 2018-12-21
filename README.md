@@ -49,4 +49,5 @@ This will save an image called *network.png* in your source folder.
 ```
 omisego = "0xd26114cd6ee289accf82350c8d8487fedb8a0c07"
 cryptokitties = "0x06012c8cf97bead5deae237070f9587f8e7a266d"
-bct = "0xf5839f46ed000d70cbab1fcd03e29e85f3aecd82"```
+bct = "0xf5839f46ed000d70cbab1fcd03e29e85f3aecd82"
+```
