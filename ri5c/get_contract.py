@@ -17,6 +17,7 @@ def get_contract(contract_address, limit=1000):
     # this https://cloud.google.com/bigquery/docs/parameterized-queries#bigquery-query-params-cli
     
     # TODO clean contract address to small caps
+    contract_address = contract_address.lower()
     print "Getting query..."
     test_query = """
         #standardSQL
