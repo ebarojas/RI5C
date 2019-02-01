@@ -9,12 +9,14 @@ import matplotlib.pyplot as plt
 import community # Detecting communities
 import pylab # Exporting figures
 
-# Instantiate Big Query
-bigquery_client = bigquery.Client()
-
 def get_contract(contract_address, limit=1000):
+    # Instantiate Big Query
+    bigquery_client = bigquery.Client()
+    
     # This needs to be converted to Parametrized SQL
     # this https://cloud.google.com/bigquery/docs/parameterized-queries#bigquery-query-params-cli
+    
+    # TODO clean contract address to small caps
     print "Getting query..."
     test_query = """
         #standardSQL
@@ -56,12 +58,12 @@ def create_graph(contract):
     print(nx.info(G))
     return G
 
-def draw_graph(graph, filename='network.png'):
+def draw_graph(graph, filename='network.png', x=100, y=100):
     print "Starting to draw..."
     G = graph
     #first compute the best partition
     partition = community.best_partition(G)
-    plt.figure(figsize=(100,100))
+    plt.figure(figsize=(x,y))
     #drawing
     size = float(len(set(partition.values())))
     pos = nx.spring_layout(G)
@@ -86,3 +88,14 @@ def network_this(contract, limit=1000):
     draw_graph(graph)
     print "Success"
     pass
+
+from ri5c.get_contract import network_this, get_contract, create_graph, draw_graph
+# g = nx.from_pandas_edgelist(df, source='from_address', target='to_address',edge_attr="value")
+# Weighted example 
+# weights = [0.1*math.log(i['value']) for i in dict(g.edges).values()]
+# #print(weights)
+# #nx.draw(g,**options)
+# fig, ax = plt.subplots(figsize=(18,18))
+# pos = nx.spring_layout(g)
+# nx.draw_networkx_nodes(g, pos, ax = ax,node_size=node_degree_size, labels=True)
+# nx.draw_networkx_edges(g, pos, width=weights, ax=ax)

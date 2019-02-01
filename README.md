@@ -1,8 +1,8 @@
 
 # RI5C Risk Index Coefficient
-## Python - NetworkX – BiGQuery implementation of an easy to use, a simple framework to measure the health of ERC20 contracts using network analysis.
+## Python - NetworkX – BigQuery implementation of an easy to use, simple framework to measure the health of smart contracts in Ethereum using network analysis.
 
-First implementation will use NetworkX: https://github.com/networkx/networkx, Pandas, Maplotlib and Python-Louvain for simple community arranging. **A lot of work is missing, but this can already produce simple files** 
+First implementation will use NetworkX: https://github.com/networkx/networkx, Pandas, Maplotlib and Python-Louvain for simple community arranging. **A lot of work is missing, but this can already produce simple network analyses** 
 
 ## Motivation
 Due to the public nature of transaction data on blockchain based financial systems, it is possible to model these systems as a network and analyze its structure to provide and define whether the different variables that emerge in the transaction history of ERC20 tokens can be used to correlate the health of the system and therefore propose a risk coefficient that quantifies how active the token is, how distributed it is and inferr how likely it is to respond to contagion and how stable the price is.
