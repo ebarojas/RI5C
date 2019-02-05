@@ -71,7 +71,7 @@ def create_graph_new(contract):
     # Pandas dataframe
     df = pd.DataFrame(data=[list(x.values()) for x in contract], columns=list(contract[0].keys()))
     # Graph
-    # import code; code.interact(local=locals())
+
     # Somehow value is in log_index, this needs to be fixed WIP
     # LOG INDEX IS A TEMP MEASURE, needs to be changed
     G = nx.from_pandas_edgelist(df, source='from_address', target='to_address', edge_attr="log_index")
@@ -103,11 +103,11 @@ def draw_graph(graph, filename='network.png', x=100, y=100):
     pylab.savefig('network.png')
 
 # WEIGHTED VERSION
+# This graph weights the vertexes, not the nodes. I need to find a way to weigh the nodes, vertexes can remain thin or change with colour, or length
 def draw_weighted_graph(graph, filename='network_weighted.png', x=500, y=500):
     print "Starting to draw a weighted graph..."
     G = graph
 
-    # import code; code.interact(local=locals())
     node_degree_size=[G.degree(n) for n in G.nodes()] # This is what makes nodes larger
 
     options = { 
@@ -118,7 +118,6 @@ def draw_weighted_graph(graph, filename='network_weighted.png', x=500, y=500):
         'arrowsize': 12, # What does this do?
     }
 
-    # import code; code.interact(local=locals())
     # LOG INDEX IS A TEMP MEASURE, needs to be changed
     weights = [0.1*log(float(i['log_index'])) for i in dict(G.edges).values()]
     #print(weights)
