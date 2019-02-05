@@ -12,6 +12,7 @@ import pylab # Exporting figures
 from math import *
 
 # Note to self: Interesting to consider using Gremlin for querying the databases
+# M. Beck's rec
 # https://pypi.org/project/gremlinpython/
 
 def get_contract(contract_address, limit=1000):
