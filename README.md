@@ -48,13 +48,44 @@ Where *limit* is the transaction limit.
 
 This will save an image called *network.png* in your source folder.
 
-### Other interesting contracts
+### Examples: ie: interesting contracts
 
-```
-omisego = "0xd26114cd6ee289accf82350c8d8487fedb8a0c07"
-cryptokitties = "0x06012c8cf97bead5deae237070f9587f8e7a266d"
-bct = "0xf5839f46ed000d70cbab1fcd03e29e85f3aecd82"
-```
+#### OmiseGo
+
+```omisego = "0xd26114cd6ee289accf82350c8d8487fedb8a0c07"```
+
+Data retrieved on March 2019:
+- Transaction limite: 2,500
+- Nodes: 2544
+- Edges: 2489
+- Average degree: 1.9568
+
+![OmiseGo First Draft Network](examples/network_omisego_2500.png)
+
+#### CryptoKitties
+
+```cryptokitties = "0x06012c8cf97bead5deae237070f9587f8e7a266d"```
+
+Data retrieved on March 2019:
+- Transaction limite:  3,000
+- Nodes:  1625
+- Edges:  1936
+- Average degree:  2.3828
+
+![CryptoKitties First Draft Network](examples/network_ct_3000.png)
+
+#### Tatatu
+
+This is an experiment with weighted graph.
+```tatatu = 0x9cda8a60dd5afa156c95bd974428d91a0812e054```
+
+Data retrieved on March 2019:
+- Transaction limit: 2,500
+- Nodes: 1776
+- Edges: 1812
+- Average degree: 2.0405
+
+![Tatatu First Draft Weighted Network](examples/network_weighted_tatatu_2500.png)
 
 ## Room to grow
 Feel free to collaborate, fork and grow. This code is open source, check [the license](/LICENSE)
