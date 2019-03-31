@@ -2,3 +2,4 @@
 config/
 .vagrant/
 *.DS_Store
+*.png
