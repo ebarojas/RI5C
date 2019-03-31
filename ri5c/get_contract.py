@@ -52,10 +52,16 @@ def create_graph(contract):
     # Create graph
     print "Creating a simple graph..."
     G = nx.Graph()
-    # Pandas dataframe
-    df = pd.DataFrame(data=[list(x.values()) for x in contract], columns=list(contract[0].keys()))
-    # Create Nodes
-    nodes = df['to_address'].unique()
+    # Pandas dataframe TODO: this method should be extracted
+    sorted_list = [u'token_address', u'from_address',  u'to_address', u'value', u'transaction_hash', u'log_index' ,u'block_timestamp', u'block_number', u'block_hash']
+    data=[list(x.values()) for x in contract]
+
+    df = pd.DataFrame(data=data, columns=sorted_list)
+
+    # Create Nodes - update to add all NODES. TODO: should check if this is the right way
+    nodes = pd.unique(df[['to_address', 'from_address']].values.ravel('K'))
+
+    # Generate GRAPH
     G.add_nodes_from(nodes)
     # Create edges
     for index, row in df.iterrows():
@@ -67,9 +73,11 @@ def create_graph(contract):
 
 # Created with F. Ramírez Alatriste – it's a weighted graph - 01.02.2019
 def create_graph_new(contract):
+    # TODO: This should be updated to stuff above, and probably DRY code.
     print "Creating a simple graph..."
     G = nx.Graph()
     # Pandas dataframe
+
     df = pd.DataFrame(data=[list(x.values()) for x in contract], columns=list(contract[0].keys()))
     # Graph
 
