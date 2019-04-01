@@ -10,6 +10,7 @@ import community # Detecting communities
 import pylab # Exporting figures
 # For log
 from math import *
+import json # to build object that can be fed to sigma.js
 
 # Note to self: Interesting to consider using Gremlin for querying the databases
 # M. Beck's rec
@@ -58,14 +59,7 @@ def create_graph(contract):
 
     df = pd.DataFrame(data=data, columns=sorted_list)
 
-    # Create Nodes - update to add all NODES. TODO: should check if this is the right way
-    nodes = pd.unique(df[['to_address', 'from_address']].values.ravel('K'))
-
-    # Generate GRAPH
-    G.add_nodes_from(nodes)
-    # Create edges
-    for index, row in df.iterrows():
-        G.add_edge(row['to_address'], row['from_address'])
+    G = nx.from_pandas_edgelist(df, source='from_address', target='to_address', edge_attr="value")
 
     print "Graph created."
     print(nx.info(G))
@@ -81,9 +75,7 @@ def create_graph_new(contract):
     df = pd.DataFrame(data=[list(x.values()) for x in contract], columns=list(contract[0].keys()))
     # Graph
 
-    # Somehow value is in log_index, this needs to be fixed WIP
-    # LOG INDEX IS A TEMP MEASURE, needs to be changed
-    G = nx.from_pandas_edgelist(df, source='from_address', target='to_address', edge_attr="log_index")
+    G = nx.from_pandas_edgelist(df, source='from_address', target='to_address', edge_attr="value")
     print "Graph created."
     print(nx.info(G))
     return G
@@ -139,6 +131,70 @@ def draw_weighted_graph(graph, filename='network_weighted.png', x=500, y=500):
     print "And now, let's save it in "+filename
     pylab.savefig('network_weighted.png')
 
+def generate_sigma_network(graph):
+    '''
+    NOTE: G should include edge_attr="value" ie: G2 = nx.from_pandas_edgelist(df, source='from_address', target='to_address', edge_attr="value")
+    This method should generate a JSON with sigmajs readable format
+    It should integrate Nodes, Edges and positions
+    '''
+    print "Starting to generate sigma.js compatible graph..."
+    
+    G = graph
+    # POSITION: First compute the best partition and get positions
+    partition = community.best_partition(G)
+    pos = nx.spring_layout(G) # should try other layouts
+    
+    # COLOR - using louvain, should work on this more, colors are unnappealing and weird
+    colors = {}
+    for node in G.nodes():
+        colors[node] = '{0:06X}'.format(partition.get(node)+70000)
+
+    # NODE SIZE - Calculate node size
+    node_size = {}
+    for node in G.nodes():
+        ne = G.edges(node, data=True)
+        value = 0
+        for v in ne:
+            value += int(v[2]["value"])
+        node_size[node] = value # Should add a log or something
+
+    # Weights
+    weights = []
+    for e in dict(G.edges).values():
+        if float(e['value']) != 0.0:
+            weights.append(float(e['value']))
+        else:
+            weights.append(0.0)
+
+    # Init JSON
+    data ={ 'nodes': [], 'edges': [] }
+
+    # Nodes
+    for n in G.nodes:
+        data['nodes'].append({
+                "id": n,
+                "label": n+", total volume: "+ str(node_size[n]),
+                "x": pos[n][0],
+                "y": pos[n][1],
+                "size": node_size[n],
+                "color": "#"+colors[n]
+            })
+
+    # Edges
+    for i, e in enumerate(G.edges):
+        data['edges'].append({
+                "id": "e" + str(i),
+                "source": e[0],
+                "target": e[1],
+                "color": '#030303',
+                "type": "arrow",
+                "size": weights[i]
+            })
+    
+    print "Finally, let's save the file :)"
+    # this will probably need to be updated, JSON should be referenced into HTML as a param most likely.
+    with open('data.json', 'w') as outfile:
+        json.dump(data, outfile)
 
 def network_this(contract, limit=1000):
     contract = get_contract(contract, limit)
