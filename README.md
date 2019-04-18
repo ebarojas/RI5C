@@ -52,7 +52,7 @@ This will save the prepared data as *data.json* on your source folder
 
 ## Load data on simple browser
 
-Use bundled minified SigmaJS data or go [their repo](https://github.com/jacomyal/sigma.js) for an updated version, *then run a simple Python server* on your root folder:
+Use bundled minified SigmaJS data or go to [their repo](https://github.com/jacomyal/sigma.js) for an updated version, *then run a simple Python server* on your root folder:
 
 ```python -m SimpleHTTPServer```
 
