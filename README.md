@@ -25,6 +25,8 @@ Database created is called "mydb", to load psql console type:
 psql -d mydb
 ```
 
+Use of this database is optional and might not be used, however it might be practical to save large amounts of data and perform local queries to save costs on BigQuery.
+
 ### Configuring BigQuery
 Note that this software uses Google's BigQuery Ethereum dataset, based on the fantastic work found of Evgeny Medvedev: https://github.com/blockchain-etl/ethereum-etl.
 
