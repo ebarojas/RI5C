@@ -1,6 +1,6 @@
 
 # RI5C Risk Index Coefficient
-## Python - NetworkX – BigQuery implementation of an easy to use, simple framework to measure the health of smart contracts in Ethereum using network analysis.
+## Python - NetworkX – BigQuery - SigmaJS implementation of an easy to use, simple framework to measure the health of smart contracts in Ethereum using network analysis.
 
 First implementation will use NetworkX: https://github.com/networkx/networkx, Pandas, Maplotlib and Python-Louvain for simple community arranging. **A lot of work is missing, but this can already produce simple network analyses** 
 
@@ -46,7 +46,15 @@ And now, from Python console run:
 
 Where *limit* is the transaction limit.
 
-This will save an image called *network.png* in your source folder.
+This will save the prepared data as *data.json* on your source folder
+
+## Load data on simple browse
+
+Run a simple Python server:
+
+```python -m SimpleHTTPServer```
+
+And go to 127.0.0.1:8000 to view the results
 
 ### Examples: ie: interesting contracts
 
