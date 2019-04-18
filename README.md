@@ -48,15 +48,17 @@ Where *limit* is the transaction limit.
 
 This will save the prepared data as *data.json* on your source folder
 
-## Load data on simple browse
+## Load data on simple browser
 
-Run a simple Python server:
+Use bundled minified SigmaJS data or go [their repo](https://github.com/jacomyal/sigma.js) for an updated version, *then run a simple Python server* on your root folder:
 
 ```python -m SimpleHTTPServer```
 
 And go to 127.0.0.1:8000 to view the results
 
 ### Examples: ie: interesting contracts
+
+Note: These are examples graphed with Maplotlib, current iteration graphs using SigmaJS
 
 #### OmiseGo
 
