@@ -25,7 +25,7 @@ def get_contract(contract_address, limit=1000):
     
     # TODO clean contract address to small caps
     contract_address = contract_address.lower()
-    print "Getting query..."
+    print ("Getting query...")
     test_query = """
         #standardSQL
         SELECT
@@ -45,13 +45,13 @@ def get_contract(contract_address, limit=1000):
     iterator = query_job.result(timeout=30)
     rows = list(iterator)
 
-    print "Finished getting data"
+    print ("Finished getting data")
     # This returns a simple dataset that can be used and tested
     return rows
 
 def create_graph(contract):
     # Create graph
-    print "Creating a simple graph..."
+    print ("Creating a simple graph...")
     G = nx.Graph()
     # Pandas dataframe TODO: this method should be extracted
     sorted_list = [u'token_address', u'from_address',  u'to_address', u'value', u'transaction_hash', u'log_index' ,u'block_timestamp', u'block_number', u'block_hash']
@@ -61,7 +61,7 @@ def create_graph(contract):
 
     G = nx.from_pandas_edgelist(df, source='from_address', target='to_address', edge_attr="value")
 
-    print "Graph created."
+    print ("Graph created.")
     print(nx.info(G))
     return G
 
@@ -69,7 +69,7 @@ def create_graph(contract):
 # Created with F. Ramírez Alatriste – it's a weighted graph - 01.02.2019
 def create_graph_new(contract):
     # TODO: This should be updated to stuff above, and probably DRY code.
-    print "Creating a simple graph..."
+    print ("Creating a simple graph...")
     G = nx.Graph()
     # Pandas dataframe
 
@@ -77,12 +77,12 @@ def create_graph_new(contract):
     # Graph
 
     G = nx.from_pandas_edgelist(df, source='from_address', target='to_address', edge_attr="value")
-    print "Graph created."
-    print(nx.info(G))
+    print ("Graph created.")
+    print (nx.info(G))
     return G
 
 def draw_graph(graph, filename='network.png', x=100, y=100):
-    print "Starting to draw..."
+    print ("Starting to draw...")
     G = graph
     #first compute the best partition
     partition = community.best_partition(G)
@@ -101,13 +101,13 @@ def draw_graph(graph, filename='network.png', x=100, y=100):
     # Draw
     nx.draw_networkx_edges(G, pos, alpha=0.5)
 
-    print "And now, let's save it in "+filename
+    print ("And now, let's save it in ", filename)
     pylab.savefig('network.png')
 
 # WEIGHTED VERSION
 # This graph weights the vertexes, not the nodes. I need to find a way to weigh the nodes, vertexes can remain thin or change with colour, or length
 def draw_weighted_graph(graph, filename='network_weighted.png', x=500, y=500):
-    print "Starting to draw a weighted graph..."
+    print ("Starting to draw a weighted graph...")
     G = graph
 
     node_degree_size=[G.degree(n) for n in G.nodes()] # This is what makes nodes larger
@@ -122,14 +122,14 @@ def draw_weighted_graph(graph, filename='network_weighted.png', x=500, y=500):
 
     # LOG INDEX IS A TEMP MEASURE, needs to be changed
     weights = [0.1*log(float(i['log_index'])) for i in dict(G.edges).values()]
-    #print(weights)
+    #print (weights)
     #nx.draw(g,**options)
     fig, ax = plt.subplots(figsize=(x,y))
     pos = nx.spring_layout(G)
     nx.draw_networkx_nodes(G, pos, ax = ax, node_size=node_degree_size, labels=True)
     nx.draw_networkx_edges(G, pos, width=weights, ax=ax)
 
-    print "And now, let's save it in "+filename
+    print ("And now, let's save it in "+filename)
     pylab.savefig('network_weighted.png')
 
 def generate_sigma_network(graph):
@@ -138,7 +138,7 @@ def generate_sigma_network(graph):
     This method should generate a JSON with sigmajs readable format
     It should integrate Nodes, Edges and positions
     '''
-    print "Starting to generate sigma.js compatible graph..."
+    print ("Starting to generate sigma.js compatible graph...")
     
     G = graph
     # POSITION: First compute the best partition and get positions
@@ -192,7 +192,7 @@ def generate_sigma_network(graph):
                 "size": weights[i]
             })
     
-    print "Finally, let's save the file :)"
+    print ("Finally, let's save the file :)")
     # this will probably need to be updated, JSON should be referenced into HTML as a param most likely.
     with open('data.json', 'w') as outfile:
         json.dump(data, outfile)
@@ -201,13 +201,13 @@ def network_this(contract, limit=1000):
     contract = get_contract(contract, limit)
     graph = create_graph(contract)
     draw_graph(graph)
-    print "Success"
+    print ("Success")
     pass
 
 def network_this_w(contract, limit=1000):
     contract = get_contract(contract, limit)
     graph = create_graph_new(contract)
     draw_weighted_graph(graph)
-    print "Success"
+    print ("Success")
     pass
 
