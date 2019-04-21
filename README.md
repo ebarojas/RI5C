@@ -1,6 +1,6 @@
 
 # RI5C Risk Index Coefficient
-## Python - NetworkX – BigQuery - SigmaJS implementation of an easy to use, simple framework to measure the health of smart contracts in Ethereum using network analysis.
+## Python3 - NetworkX – BigQuery - SigmaJS implementation of an easy to use, simple framework to measure the health of smart contracts in Ethereum using network analysis.
 
 First implementation will use NetworkX: https://github.com/networkx/networkx, Pandas, Maplotlib and Python-Louvain for simple community arranging. **A lot of work is missing, but this can already produce simple network analyses** 
 
@@ -17,7 +17,7 @@ get server running and start creating stuff
 vagrant ssh
 
 $ cd /vagrant/
-$ python # To run a console
+$ python3.6 # To run a console
 ```
 
 Database created is called "mydb", to load psql console type:
@@ -54,7 +54,7 @@ This will save the prepared data as *data.json* on your source folder
 
 Use bundled minified SigmaJS data or go to [their repo](https://github.com/jacomyal/sigma.js) for an updated version, *then run a simple Python server* on your root folder:
 
-```python -m SimpleHTTPServer```
+```python3.6 -m SimpleHTTPServer```
 
 And go to 127.0.0.1:8000 to view the results
 

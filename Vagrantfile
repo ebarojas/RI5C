@@ -17,7 +17,9 @@ VAGRANTFILE_API_VERSION = '2'
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # Every Vagrant virtual environment requires a box to build off of.
-  config.vm.box = 'debian/jessie64'
+  config.vm.box = 'debian/stretch64'
+  config.vm.box_check_update = true
+
   config.vm.define "RI5C"
 
   # Open ports:
@@ -46,6 +48,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   end
 
   # Provision application
+  config.vm.provision "shell", privileged: false, run: "always", path: "bin/install_python3_stretch.sh"
   config.vm.provision "shell", privileged: false, run: "always", path: "config/environ_variables.sh"
   config.vm.provision "shell", privileged: false, run: "always", path: "bin/setup_box.sh"
 
