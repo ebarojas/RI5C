@@ -105,7 +105,7 @@ Data retrieved on March 2019:
 ```cryptokitties = "0x06012c8cf97bead5deae237070f9587f8e7a266d"```
 
 Data retrieved on March 2019:
-- Transaction limite:  3,000
+- Transaction limit:  3,000
 - Nodes:  1625
 - Edges:  1936
 - Average degree:  2.3828
