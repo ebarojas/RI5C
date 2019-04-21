@@ -1,5 +1,7 @@
 *.pyc
 config/
 .vagrant/
+experimental/
 *.DS_Store
 *.png
+*.json
