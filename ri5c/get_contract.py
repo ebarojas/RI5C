@@ -210,13 +210,3 @@ def network_this_w(contract, limit=1000):
     print "Success"
     pass
 
-# from ri5c.get_contract import network_this, get_contract, create_graph, draw_graph
-# g = nx.from_pandas_edgelist(df, source='from_address', target='to_address',edge_attr="value")
-# Weighted example 
-# weights = [0.1*math.log(i['value']) for i in dict(g.edges).values()]
-# #print(weights)
-# #nx.draw(g,**options)
-# fig, ax = plt.subplots(figsize=(18,18))
-# pos = nx.spring_layout(g)
-# nx.draw_networkx_nodes(g, pos, ax = ax,node_size=node_degree_size, labels=True)
-# nx.draw_networkx_edges(g, pos, width=weights, ax=ax)
