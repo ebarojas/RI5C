@@ -65,6 +65,7 @@ def create_graph(contract):
     print(nx.info(G))
     return G
 
+# I think this is a duplicate
 # Created with F. Ramírez Alatriste – it's a weighted graph - 01.02.2019
 def create_graph_new(contract):
     # TODO: This should be updated to stuff above, and probably DRY code.
