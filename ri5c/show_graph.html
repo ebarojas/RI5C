@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <style type="text/css">
+      #container {
+        max-width: 100%;
+        height: 1000px;
+        margin: auto;
+      }
+    </style>
+
+    <meta charset="UTF-8">
+    <title>RI5C Graph visualization</title>
+    <!-- We import libraries here -->
+    <!-- Import Sigma JS -->
+    <script src="../lib/sigma.min.js"></script>
+    <script src="../lib/sigma.layout.forceAtlas2.min.js"></script>
+    <script src="../lib/sigma.parsers.gexf.min.js"></script>
+    <script src="../lib/sigma.parsers.json.min.js"></script>
+  </head>
+  <body>
+    <h1>Welcome to RI5C</h1>
+    <form method="post" action="/">
+      <label for="name">Contract:</label>
+      <input type="text" name="contract" id="contract">
+      <input class="button" type="submit" value="Get Contract">
+    </form>
+    <div id="container">
+    </div>
+  </body>
+</html>
+
+<!-- Draw graph using sigma.js -->
+<script>
+  var text = '{% raw data %}';
+  var obj = JSON.parse(text);
+
+  s = new sigma({
+    graph: obj,
+    // Here is the ID of the DOM element that
+    // will contain the graph:
+    container: 'container',
+    settings: {
+      defaultNodeColor: '#ec5148'
+      }
+    },
+    function(s) {
+      // This function will be executed when the
+      // graph is displayed, with "s" the related
+      // sigma instance.
+    }
+  );
+</script>
+
+<html>
+<head>
+
+
+<!-- </head>
+<body>
+<div id="container"></div>
+
+<script>
+  sigma.parsers.json('data.json', {
+    container: 'container',
+    settings: {
+      defaultNodeColor: '#ec5148'
+    }
+  });
+</script>
+</body>
+</html>
+ -->
