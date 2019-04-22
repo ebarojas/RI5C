@@ -1,14 +1,14 @@
 
-# RI5C Risk Index Coefficient
+# RI5C Smart Contract Analysis Tool
 ## Python3 - NetworkX – BigQuery - SigmaJS implementation of an easy to use, simple framework to measure the health of smart contracts in Ethereum using network analysis.
 
-First implementation will use NetworkX: https://github.com/networkx/networkx, Pandas, Maplotlib and Python-Louvain for simple community arranging. **A lot of work is missing, but this can already produce simple network analyses** 
+First implementation will use NetworkX: https://github.com/networkx/networkx, Pandas, Maplotlib and Python-Louvain for simple community arranging. **Some work is missing, but this can already produce interesting network analyses** 
 
 ## Motivation
 Due to the public nature of transaction data on blockchain based financial systems, it is possible to model these systems as a network and analyze its structure to provide and define whether the different variables that emerge in the transaction history of ERC20 tokens can be used to correlate the health of the system and therefore propose a risk coefficient that quantifies how active the token is, how distributed it is and inferr how likely it is to respond to contagion and how stable the price is.
 
 ## Quick start
-As is standard everything you need is ```requirements.txt```. 
+As is standard everything you need is in ```requirements.txt```. 
 
 If it's your first time using vagrant, check out how to use it [here](https://www.vagrantup.com/docs/installation/).
 ```
@@ -19,8 +19,9 @@ vagrant ssh
 $ cd /vagrant/
 $ python3.6 # To run a console
 ```
+### SQL Legacy
 
-Database created is called "mydb", to load psql console type:
+If you need a local database, it is called "mydb", to load psql console type:
 ```
 psql -d mydb
 ```
@@ -126,5 +127,5 @@ Data retrieved on March 2019:
 ![Tatatu First Draft Weighted Network](examples/network_weighted_tatatu_2500.png)
 
 ## Room to grow
-Feel free to collaborate, fork and grow. This code is open source, check [the license](/LICENSE)
+Feel free to collaborate, there are some issues and a project board. Please fork and grow. This code is open source, check [the license](/LICENSE)
 
