@@ -1,5 +1,5 @@
 
-# RI5C Smart Contract Analysis Tool
+# RI5C: Smart Contract Analysis Tool
 ## Python3 - NetworkX – BigQuery - SigmaJS implementation of an easy to use, simple framework to measure the health of smart contracts in Ethereum using network analysis.
 
 First implementation will use NetworkX: https://github.com/networkx/networkx, Pandas, Maplotlib and Python-Louvain for simple community arranging. **Some work is missing, but this can already produce interesting network analyses** 
