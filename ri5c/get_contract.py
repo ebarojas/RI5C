@@ -192,10 +192,10 @@ def generate_sigma_network(graph):
                 "size": weights[i]
             })
     
-    print ("Finally, let's save the file :)")
+    print ("Finally, let's return data :)")
+    
     # this will probably need to be updated, JSON should be referenced into HTML as a param most likely.
-    with open('data.json', 'w') as outfile:
-        json.dump(data, outfile)
+    return json.dumps(data)
 
 def network_this(contract, limit=1000):
     contract = get_contract(contract, limit)

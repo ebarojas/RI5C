@@ -13,6 +13,9 @@ jdcal==1.4
 et_xmlfile==1.0.1
 records==0.5.2
 
+# Tornado Server
+tornado==6.0.2
+
 # Crypto
 pycrypto==2.6.1 # Potential vulnerability, probably not relevant for this implementation
 merkletools==1.0.2
