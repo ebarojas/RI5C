@@ -1,6 +1,10 @@
 # -*- coding: utf-8 -*-
 
+import os
+# BigQuery
 from google.cloud import bigquery
+from google.oauth2 import service_account
+# Data Science and Networks
 import pandas as pd
 import networkx as nx
 import matplotlib
@@ -8,18 +12,17 @@ matplotlib.use('Agg') # Important because no GUI in vagrant or server
 import matplotlib.pyplot as plt
 import community # Detecting communities
 import pylab # Exporting figures
-# For log
+# For logarithmic stuff
 from math import *
+# Miscellaneous
 import json # to build object that can be fed to sigma.js
+from ri5c import settings
 
 # Note to self: Interesting to consider using Gremlin for querying the databases
 # M. Beck's rec
 # https://pypi.org/project/gremlinpython/
 
 def get_contract(contract_address, limit=1000):
-    # Instantiate Big Query
-    bigquery_client = bigquery.Client()
-    
     # This needs to be converted to Parametrized SQL
     # this https://cloud.google.com/bigquery/docs/parameterized-queries#bigquery-query-params-cli
     
@@ -38,8 +41,14 @@ def get_contract(contract_address, limit=1000):
           %s
     """ % (contract_address, limit)
 
-    # Connect
+    # === Generate credentials and connect to BigQuery
+    
+    # Read env data and get JSON data from production level var
+    set_googlebq_credentials()
+
+    # Instantiate BigQuery
     bql = bigquery.Client()
+
     # Query
     query_job = bql.query(test_query)
     iterator = query_job.result(timeout=30)
@@ -48,6 +57,26 @@ def get_contract(contract_address, limit=1000):
     print ("Finished getting data")
     # This returns a simple dataset that can be used and tested
     return rows
+
+def set_googlebq_credentials():
+    '''
+    If you're doing this from production in Heroku, you might need something like this:
+    $heroku config:set GOOGLE_APPLICATION_DATA="$(< ./config/big_query_creds.json)" -a HEROKU_APP
+    '''
+    production = settings.PRODUCTION
+    if production == False:
+        return False
+
+    # Read env data and get JSON data from production level var
+    credentials_raw = os.environ.get('GOOGLE_APPLICATION_DATA')
+    # save to JSON
+    data = json.loads(credentials_raw)
+    # Write data to temporary json file
+    with open('data.json', 'w') as outfile:
+        json.dump(data, outfile)
+
+    return True
+
 
 def create_graph(contract):
     # Create graph
@@ -63,7 +92,14 @@ def create_graph(contract):
 
     print ("Graph created.")
     print(nx.info(G))
-    return G
+
+    # Get Avg Degree for graph_data
+    nnodes = G.number_of_nodes()
+    s=sum(dict(G.degree()).values())
+    avg_degree = (float(s)/float(nnodes))
+    graph_data = {"density": nx.density(G), "degree": avg_degree, "nodes": nnodes, "edges": G.number_of_edges() }
+
+    return G, graph_data
 
 # I think this is a duplicate
 # Created with F. Ramírez Alatriste – it's a weighted graph - 01.02.2019
