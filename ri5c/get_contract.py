@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 
+import os
 from google.cloud import bigquery
 from google.oauth2 import service_account
 import pandas as pd
