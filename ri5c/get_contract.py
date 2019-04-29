@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from google.cloud import bigquery
+from google.oauth2 import service_account
 import pandas as pd
 import networkx as nx
 import matplotlib
@@ -17,9 +18,6 @@ import json # to build object that can be fed to sigma.js
 # https://pypi.org/project/gremlinpython/
 
 def get_contract(contract_address, limit=1000):
-    # Instantiate Big Query
-    bigquery_client = bigquery.Client()
-    
     # This needs to be converted to Parametrized SQL
     # this https://cloud.google.com/bigquery/docs/parameterized-queries#bigquery-query-params-cli
     
@@ -38,8 +36,15 @@ def get_contract(contract_address, limit=1000):
           %s
     """ % (contract_address, limit)
 
-    # Connect
-    bql = bigquery.Client()
+    # Connect to BigQuery
+    # Read env data and get JSON data from production level var
+    credentials_raw = os.environ.get('GOOGLE_APPLICATION_CREDENTIALS')
+    # Generate credentials
+    service_account_info = json.loads(credentials_raw)
+    credentials = service_account.Credentials.from_service_account_info(
+        service_account_info)
+
+    bql = bigquery.Client(credentials=credentials)
     # Query
     query_job = bql.query(test_query)
     iterator = query_job.result(timeout=30)
