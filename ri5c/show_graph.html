@@ -10,7 +10,7 @@
     </style>
 
     <meta charset="UTF-8">
-    <title>RI5C Graph visualization</title>
+    <title>RI5C Blockchain Navigator</title>
     <!-- We import libraries here -->
     <!-- Import Sigma JS -->
     <script src="../lib/sigma.min.js"></script>
@@ -19,7 +19,10 @@
     <script src="../lib/sigma.parsers.json.min.js"></script>
   </head>
   <body>
-    <h1>Welcome to RI5C</h1>
+    <h1>Welcome to RI5C: a visual blockchain navigator</h1>
+    <h2>Choose an Ethereum smart contract to visualize, click <a target='blank' href="https://www.github.com/ebarojas/ri5c">here</a> to learn more.</h2>
+    <p>Contract address: {{ graph_data["contract"] }}</p>
+    <p>Average Degree: {{graph_data["degree"]}}, Density: {{graph_data["density"]}}, Number of Nodes: {{graph_data["nodes"]}}, Number of Edges {{graph_data["edges"]}} </p>
     <form method="post" action="/">
       <label for="name">Contract:</label>
       <input type="text" name="contract" id="contract">
