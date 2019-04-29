@@ -39,13 +39,15 @@ def get_contract(contract_address, limit=1000):
 
     # Connect to BigQuery
     # Read env data and get JSON data from production level var
-    credentials_raw = os.environ.get('GOOGLE_APPLICATION_CREDENTIALS')
+    credentials_raw = os.environ.get('GOOGLE_APPLICATION_DATA')
     # Generate credentials
-    service_account_info = json.loads(credentials_raw)
-    credentials = service_account.Credentials.from_service_account_info(
-        service_account_info)
+    data = json.loads(credentials_raw)
+    
+    with open('data.json', 'w') as outfile:
+        json.dump(data, outfile)
 
-    bql = bigquery.Client(credentials=credentials)
+    bql = bigquery.Client()
+
     # Query
     query_job = bql.query(test_query)
     iterator = query_job.result(timeout=30)
