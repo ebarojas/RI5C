@@ -92,7 +92,14 @@ def create_graph(contract):
 
     print ("Graph created.")
     print(nx.info(G))
-    return G
+
+    # Get Avg Degree for graph_data
+    nnodes = G.number_of_nodes()
+    s=sum(dict(G.degree()).values())
+    avg_degree = (float(s)/float(nnodes))
+    graph_data = {"density": nx.density(G), "degree": avg_degree, "nodes": nnodes, "edges": G.number_of_edges() }
+
+    return G, graph_data
 
 # I think this is a duplicate
 # Created with F. Ramírez Alatriste – it's a weighted graph - 01.02.2019
