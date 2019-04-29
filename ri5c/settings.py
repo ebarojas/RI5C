@@ -10,3 +10,5 @@ import ast
 
 # This might removed if local SQL implementation does not move forward
 DATABASE_URL = os.environ['DATABASE_URL']
+PRODUCTION = ast.literal_eval(os.environ['PRODUCTION'])
+

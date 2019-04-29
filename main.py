@@ -23,7 +23,7 @@ def main():
     ])
     http_server = HTTPServer(app)
     http_server.listen(port)
-    print('RI5C is listening on http://localhost:%i' % port)
+    print('RI5C is listening on port:%i' % port)
     IOLoop.current().start()
 
 if __name__ == "__main__":
