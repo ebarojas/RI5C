@@ -1,11 +1,11 @@
 
 # RI5C: Smart Contract Analysis Tool
-## Python3 - NetworkX – BigQuery - SigmaJS implementation of an easy to use, simple framework to measure the health of smart contracts in Ethereum using network analysis.
+## Python3 - NetworkX – BigQuery - SigmaJS implementation of an easy to use, simple framework to navigate smart contracts in Ethereum using network analysis, a network based blockchain navigator.
 
-First implementation will use NetworkX: https://github.com/networkx/networkx, Pandas, Maplotlib and Python-Louvain for simple community arranging. **Some work is missing, but this can already produce interesting network analyses** 
+This implementation uses NetworkX: https://github.com/networkx/networkx, Pandas, Maplotlib, SigmaJS and Python-Louvain for simple community arranging. **Some work is missing, but this can already produce interesting network analyses** 
 
 ## Motivation
-Due to the public nature of transaction data on blockchain based financial systems, it is possible to model these systems as a network and analyze its structure to provide and define whether the different variables that emerge in the transaction history of ERC20 tokens can be used to correlate the health of the system and therefore propose a risk coefficient that quantifies how active the token is, how distributed it is and inferr how likely it is to respond to contagion and how stable the price is.
+Due to the public nature of transaction data on blockchain based financial systems, it is possible to model these systems as a network and analyze its structure to provide and define whether the different variables that emerge in the transaction history of ERC20 tokens can be used to correlate the health of the system and therefore propose a risk coefficient that quantifies how active the token is, how distributed it is and infer how likely it is to respond to contagion and how stable the price is.
 
 ## Quick start
 As is standard everything you need is in ```requirements.txt```. 
@@ -43,6 +43,16 @@ Find an interesting contract: ([OmiseGo](https://omisego.network)) ```omisego = 
 
 And now, from Python console run:
 
+### Tornado server that will draw your contract of choice using SigmaJS
+
+Use bundled minified SigmaJS data or go to [their repo](https://github.com/jacomyal/sigma.js) for an updated version, *then run a simple Python server* on your root folder:
+
+```python3.6 main.py```
+
+And go to 127.0.0.1:8000 to view the results
+
+Choose a contract and type it into the "Get Contract" box.
+
 ### For a PNG network drawn with Maplotlib and NetworkX
 
 ```from ri5c.get_contract import network_this```
@@ -52,16 +62,6 @@ And now, from Python console run:
 Where *limit* is the transaction limit.
 
 This will save the prepared data as *network.png* on your source folder
-
-### For a JSON network that will be drawn with SigmaJS and displayed on simple browser
-
-Use bundled minified SigmaJS data or go to [their repo](https://github.com/jacomyal/sigma.js) for an updated version, *then run a simple Python server* on your root folder:
-
-```python3.6 main.py```
-
-And go to 127.0.0.1:8000 to view the results
-
-Choose a contract and type it into the "Get Contract" box.
 
 ## Maplotlib Examples: ie: interesting contracts
 
