@@ -21,7 +21,7 @@
   <body>
     <h1>Welcome to RI5C: a visual blockchain navigator</h1>
     <h2>Choose an Ethereum smart contract to visualize, click <a target='blank' href="https://www.github.com/ebarojas/ri5c">here</a> to learn more.</h2>
-    <p>Contract address: {{ graph_data["contract"] }}</p>
+    <p>Contract address: <a href="https://etherscan.io/token/{{ graph_data['contract'] }}">{{ graph_data["contract"] }}</a></p>
     <p>Average Degree: {{graph_data["degree"]}}, Density: {{graph_data["density"]}}, Number of Nodes: {{graph_data["nodes"]}}, Number of Edges {{graph_data["edges"]}} </p>
     <form method="post" action="/">
       <label for="name">Contract:</label>
