@@ -53,37 +53,15 @@ Where *limit* is the transaction limit.
 
 This will save the prepared data as *network.png* on your source folder
 
-### For a JSON network that will be drawn with SigmaJS and
-
-```from ri5c.get_contract import get_contract, create_graph, generate_sigma_network```
-
-Choose a contract
-
-```omisego = "0xd26114cd6ee289accf82350c8d8487fedb8a0c07"```
-
-Get contract data from BigQuery
-
-```contract = get_contract(omisego, limit=2000)```
-
-Create graph with NetworkX
-
-```graph = create_graph(contract)```
-
-and finally, generate SigmaJS graph!
-
-```generate_sigma_network(graph)```
-
-Where *limit* is the transaction limit.
-
-This will save the prepared data as *data.json* on your source folder
-
-#### Load data on simple browser
+### For a JSON network that will be drawn with SigmaJS and displayed on simple browser
 
 Use bundled minified SigmaJS data or go to [their repo](https://github.com/jacomyal/sigma.js) for an updated version, *then run a simple Python server* on your root folder:
 
-```python3.6 -m http.server```
+```python3.6 main.py```
 
 And go to 127.0.0.1:8000 to view the results
+
+Choose a contract and type it into the "Get Contract" box.
 
 ## Maplotlib Examples: ie: interesting contracts
 
