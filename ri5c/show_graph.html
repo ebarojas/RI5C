@@ -19,10 +19,12 @@
     <script src="../lib/sigma.parsers.gexf.min.js"></script>
     <script src="../lib/sigma.parsers.json.min.js"></script>
     <script src="../lib/sigma.renderers.edgeLabels.min.js"></script>
+    <script src="../lib/sigma.plugins.filter.min.js"></script>
   </head>
   <body>
     <h1>Welcome to RI5C: a visual blockchain navigator</h1>
     <h2>Choose an Ethereum smart contract to visualize, click <a target='blank' href="https://www.github.com/ebarojas/ri5c">here</a> to learn more.</h2>
+    <p>Double click on a Node or Edge to see Etherscan details on address or transaction.</p>
     <p>Contract address: <a target="blank" href="https://etherscan.io/token/{{ graph_data['contract'] }}">{{ graph_data["contract"] }}</a></p>
     <p>Average Degree: {{graph_data["degree"]}}, Density: {{graph_data["density"]}}, Number of Nodes: {{graph_data["nodes"]}}, Number of Edges {{graph_data["edges"]}} </p>
     <form method="post" action="/">
@@ -51,7 +53,7 @@
     // will contain the graph:
     container: 'container',
     settings: {
-      defaultNodeColor: '#ec5148',
+      defaultNodeColor: 'rgba(190,190,190,0.4)',
       enableEdgeHovering: true,
       edgeHoverColor: 'edge',
       defaultEdgeHoverColor: '#000',
@@ -59,6 +61,7 @@
       edgeHoverExtremities: true,
       maxEdgeSize: 3,
       edgeLabelThreshold: 2,
+      minNodeSize: 2,
       }
     },
     function(s) {
@@ -67,10 +70,26 @@
       // sigma instance.
     }
   );
-  // Bind the events:
+  // JS Node Logic
   s.bind('doubleClickNode', function(e) {
     window.open("https://www.etherscan.com/address/"+e.data.node.id)
   });
+  s.bind('clickNode', function(e) {
+    // window.open("https://www.etherscan.com/address/"+e.data.node.id)
+    var nodeId = e.data.node.id;
+    s.graph.adjacentEdges(nodeId).forEach(
+      function (ee) {
+        if (ee.color === '#030303' && ee.source === nodeId){
+          ee.color = "rgba(190,190,190,0.4)";
+        }
+        else if (ee.source === nodeId){
+          ee.color = '#030303';
+        }
+      }
+    );
+    s.refresh();
+  });
+  // JS Edge Logic
   s.bind('doubleClickEdge', function(e) {
     window.open("https://etherscan.io/tx/"+e.data.edge.label)
   });
