@@ -58,6 +58,7 @@
       edgeHoverSizeRatio: 1,
       edgeHoverExtremities: true,
       maxEdgeSize: 3,
+      edgeLabelThreshold: 2,
       }
     },
     function(s) {
@@ -71,7 +72,6 @@
     window.open("https://www.etherscan.com/address/"+e.data.node.id)
   });
   s.bind('doubleClickEdge', function(e) {
-    console.log(e.data.edge.label);
     window.open("https://etherscan.io/tx/"+e.data.edge.label)
   });
 </script>
