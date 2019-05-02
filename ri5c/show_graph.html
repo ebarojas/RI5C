@@ -24,7 +24,7 @@
   <body>
     <h1>Welcome to RI5C: a visual blockchain navigator</h1>
     <h2>Choose an Ethereum smart contract to visualize, click <a target='blank' href="https://www.github.com/ebarojas/ri5c">here</a> to learn more.</h2>
-    <p>Double click on a Node or Edge to see Etherscan details on address or transaction.</p>
+    <h3>Double click on a Node or Edge to see Etherscan details on address or transaction.</h3>
     <p>Contract address: <a target="blank" href="https://etherscan.io/token/{{ graph_data['contract'] }}">{{ graph_data["contract"] }}</a></p>
     <p>Average Degree: {{graph_data["degree"]}}, Density: {{graph_data["density"]}}, Number of Nodes: {{graph_data["nodes"]}}, Number of Edges {{graph_data["edges"]}} </p>
     <form method="post" action="/">
@@ -60,8 +60,9 @@
       edgeHoverSizeRatio: 1,
       edgeHoverExtremities: true,
       maxEdgeSize: 3,
-      edgeLabelThreshold: 2,
-      minNodeSize: 2,
+      edgeLabelThreshold: 5,
+      minNodeSize: 1.6,
+      maxNodeSize: 15,
       }
     },
     function(s) {
@@ -97,20 +98,3 @@
 
 <html>
 <head>
-
-
-<!-- </head>
-<body>
-<div id="container"></div>
-
-<script>
-  sigma.parsers.json('data.json', {
-    container: 'container',
-    settings: {
-      defaultNodeColor: '#ec5148'
-    }
-  });
-</script>
-</body>
-</html>
- -->

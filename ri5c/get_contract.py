@@ -235,8 +235,7 @@ def generate_sigma_network(graph):
             })
     
     print ("Finally, let's return data :)")
-    
-    # this will probably need to be updated, JSON should be referenced into HTML as a param most likely.
+
     return json.dumps(data)
 
 def network_this(contract, limit=1000):
