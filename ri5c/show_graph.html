@@ -41,11 +41,22 @@
 
   s = new sigma({
     graph: obj,
+    renderer: {
+      container: document.getElementById('container'),
+      type: 'canvas'
+    },
+
     // Here is the ID of the DOM element that
     // will contain the graph:
     container: 'container',
     settings: {
-      defaultNodeColor: '#ec5148'
+      defaultNodeColor: '#ec5148',
+      enableEdgeHovering: true,
+      edgeHoverColor: 'edge',
+      defaultEdgeHoverColor: '#000',
+      edgeHoverSizeRatio: 1,
+      edgeHoverExtremities: true,
+      maxEdgeSize: 3,
       }
     },
     function(s) {
@@ -54,6 +65,13 @@
       // sigma instance.
     }
   );
+  // Bind the events:
+  s.bind('doubleClickNode', function(e) {
+      window.open("https://www.etherscan.com/address/"+e.data.node.id)
+  });
+  s.bind('doubleClickEdge', function(e) {
+    console.log(e.data.edge);
+  });
 </script>
 
 <html>
