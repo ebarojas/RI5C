@@ -18,6 +18,7 @@
     <script src="../lib/sigma.layout.forceAtlas2.min.js"></script>
     <script src="../lib/sigma.parsers.gexf.min.js"></script>
     <script src="../lib/sigma.parsers.json.min.js"></script>
+    <script src="../lib/sigma.renderers.edgeLabels.min.js"></script>
   </head>
   <body>
     <h1>Welcome to RI5C: a visual blockchain navigator</h1>
@@ -67,10 +68,11 @@
   );
   // Bind the events:
   s.bind('doubleClickNode', function(e) {
-      window.open("https://www.etherscan.com/address/"+e.data.node.id)
+    window.open("https://www.etherscan.com/address/"+e.data.node.id)
   });
   s.bind('doubleClickEdge', function(e) {
-    console.log(e.data.edge);
+    console.log(e.data.edge.label);
+    window.open("https://etherscan.io/tx/"+e.data.edge.label)
   });
 </script>
 
