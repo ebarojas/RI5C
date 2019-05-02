@@ -88,7 +88,7 @@ def create_graph(contract):
 
     df = pd.DataFrame(data=data, columns=sorted_list)
 
-    G = nx.from_pandas_edgelist(df, source='from_address', target='to_address', edge_attr="value")
+    G = nx.from_pandas_edgelist(df, source='from_address', target='to_address', edge_attr=["value", "transaction_hash"])
 
     print ("Graph created.")
     print(nx.info(G))
@@ -203,6 +203,11 @@ def generate_sigma_network(graph):
         else:
             weights.append(0.0)
 
+    # txids
+    txids = []
+    for e in dict(G.edges).values():
+        txids.append(e['transaction_hash'])
+        
     # Init JSON
     data ={ 'nodes': [], 'edges': [] }
 
@@ -221,7 +226,7 @@ def generate_sigma_network(graph):
     for i, e in enumerate(G.edges):
         data['edges'].append({
                 "id": "e" + str(i),
-                "label": "Test",
+                "label": txids[i],
                 "source": e[0],
                 "target": e[1],
                 "color": "rgba(190,190,190,0.4)", # Last digit is transparency
