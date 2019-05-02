@@ -221,10 +221,11 @@ def generate_sigma_network(graph):
     for i, e in enumerate(G.edges):
         data['edges'].append({
                 "id": "e" + str(i),
+                "label": "Test",
                 "source": e[0],
                 "target": e[1],
-                "color": '#030303',
-                "type": "arrow",
+                "color": "rgba(190,190,190,0.4)", # Last digit is transparency
+                "type": 'arrow',
                 "size": weights[i]
             })
     
