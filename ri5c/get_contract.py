@@ -184,7 +184,7 @@ def generate_sigma_network(graph):
     # COLOR - using louvain, should work on this more, colors are unnappealing and weird
     colors = {}
     for node in G.nodes():
-        colors[node] = '{0:06X}'.format(partition.get(node)+70000)
+        colors[node] = '{0:06X}'.format(partition.get(node)*70000)
 
     # NODE SIZE - Calculate node size
     node_size = {}
