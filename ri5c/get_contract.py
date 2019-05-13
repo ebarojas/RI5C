@@ -43,10 +43,6 @@ def get_contract(contract_address, limit=1000):
           %s
 
     """ % (contract_address, limit)
-
-    # Feb-28-2019 05:01:39 Dentacoin TX
-    # Add to SQL Query
-    # AND block_timestamp BETWEEN '2019-02-28 04:27:39 UTC' AND '2019-02-28 23:52:39 UTC'
     
     # === Generate credentials and connect to BigQuery
     # Read env data and get JSON data from production level var
