@@ -37,8 +37,11 @@ def get_contract(contract_address, limit=1000):
           `bigquery-public-data.ethereum_blockchain.token_transfers`
         WHERE
           token_address='%s'
+        ORDER BY
+          block_timestamp DESC
         LIMIT
           %s
+
     """ % (contract_address, limit)
 
     # === Generate credentials and connect to BigQuery
