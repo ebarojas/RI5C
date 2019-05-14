@@ -43,7 +43,7 @@ def get_contract(contract_address, limit=1000):
           %s
 
     """ % (contract_address, limit)
-    
+
     # === Generate credentials and connect to BigQuery
     # Read env data and get JSON data from production level var
     set_googlebq_credentials()
