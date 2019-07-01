@@ -4,6 +4,9 @@
 
 This implementation uses NetworkX: https://github.com/networkx/networkx, Pandas, Maplotlib, SigmaJS and Python-Louvain for simple community arranging. **Some work is missing, but this can already produce interesting network analyses** 
 
+Please donate to support project: **1DbTky3KKfY5aShvHy4mrsSzHQZhsPr3zK**
+![Donate](assets/donate.jpg)
+
 ## Motivation
 Due to the public nature of transaction data on blockchain based financial systems, it is possible to model these systems as a network and analyze its structure to provide and define whether the different variables that emerge in the transaction history of ERC20 tokens can be used to correlate the health of the system and therefore propose a risk coefficient that quantifies how active the token is, how distributed it is and infer how likely it is to respond to contagion and how stable the price is.
 
