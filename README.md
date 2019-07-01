@@ -4,7 +4,7 @@
 
 This implementation uses NetworkX: https://github.com/networkx/networkx, Pandas, Maplotlib, SigmaJS and Python-Louvain for simple community arranging. **Some work is missing, but this can already produce interesting network analyses** 
 
-Please donate to support project: **1DbTky3KKfY5aShvHy4mrsSzHQZhsPr3zK**
+Please donate some BTC to support the project: **1DbTky3KKfY5aShvHy4mrsSzHQZhsPr3zK**
 
 ![Donate](assets/donate.jpg)
 
