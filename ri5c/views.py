@@ -1,7 +1,10 @@
 import json
+import datetime
 from tornado.web import RequestHandler
 # Contract generation
 from ri5c.get_contract import get_contract, create_graph, generate_sigma_network
+# To persist searches
+from schema.DBManager import DBManager
 
 class GraphView(RequestHandler):
     """Only allow GET requests."""
@@ -29,7 +32,33 @@ class GraphView(RequestHandler):
         # Aggregated data
         info["contract"] = contract
 
+        self._save_search(contract, datetime.datetime.now())
+
         self.render("show_graph.html", data=data, graph_data=info)
+
+    def _save_search(self, contract, timestamp):
+        '''
+        This should be done in a DB Manager style of class that can query and write at the same time
+        '''
+        print ("Attempting to save the query")
+        db = None
+
+        try:
+            db = DBManager()
+            db = db.get_db()
+            # This line doesn't work - need to input the text.
+            # This needs binding with object and rest of shite
+            db.query("INSERT INTO searches (contract, timestamp) \
+                VALUES (:contract, :timestamp)", \
+                contract=contract, timestamp=timestamp)
+            print("Query saved successfully")
+
+        except Exception as error:
+            print("Could not save search!", error)
+
+        finally:
+            db.close()
+        
     # def send_response(self, data, status=200):
     #     """Construct and send a JSON response with appropriate status code."""
     #     self.set_status(status)
