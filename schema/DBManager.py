@@ -1,13 +1,13 @@
 # Database manager
 
-from settings import DATABASE_URL
+from ri5c import settings
 import records
 
 class DBManager(object):
     """docstring for DBManager"""
     def __init__(self):
         super(DBManager, self).__init__()
-        self.db = records.Database(DATABASE_URL)
+        self.db = records.Database(settings.DATABASE_URL)
         # self.model = self.db
 
     # TODO: Need to change age to timestamp and amount to value - this code is not very DRY.
@@ -21,6 +21,20 @@ class DBManager(object):
             tx_to text, \
             tx_from text, \
             timestamp text\
+        )')
+
+    def create_searches_table(self):
+        '''
+        A table to persist all the searches made to the platform
+        '''
+        self.db.query('CREATE TABLE searches (id SERIAL PRIMARY KEY, \
+            contract text, \
+            date_from text NULL, \
+            date_to text NULL, \
+            price text NULL, \
+            paid BOOLEAN NOT NULL DEFAULT FALSE, \
+            txid text NULL, \
+            timestamp TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP\
         )')
 
     def drop_table(self, table):
