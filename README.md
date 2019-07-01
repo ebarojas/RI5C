@@ -23,9 +23,19 @@ vagrant ssh
 $ cd /vagrant/
 $ python3.6 # To run a console
 ```
-### SQL Legacy
 
-If you need a local database, it is called "mydb", to load psql console type:
+Instantiate SQL tables
+
+```
+from schema.DBManager import DBManager
+db = DBManager()
+db.create_searches_table()
+```
+
+### SQL Search Persistence
+
+Searches are persisted by default in "searches" table that you instantiated. You can do other things if you need to, the db is called "mydb", to load psql console type:
+
 ```
 psql -d mydb
 ```
