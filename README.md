@@ -24,7 +24,7 @@ $ cd /vagrant/
 $ python3.6 # To run a console
 ```
 
-Instantiate SQL tables
+Instantiate SQL tables in a python console.
 
 ```
 from schema.DBManager import DBManager
