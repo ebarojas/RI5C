@@ -21,7 +21,7 @@ affiliations:
    index: 1
  - name: Universidad Nacional Autónoma de México
    index: 2
- - name: Universidad de País Vazco
+ - name: Universidad de País Vasco
    index: 3
  - name: Universidad Autónoma de la Ciudad de México
    index: 4
