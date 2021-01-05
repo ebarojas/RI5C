@@ -1,8 +1,12 @@
 
-# RI5C: Smart Contract Analysis Tool
-## Python3 - NetworkX – BigQuery - SigmaJS implementation of an easy to use, simple framework to navigate smart contracts in Ethereum using network analysis, a network based blockchain navigator.
+# RI5C: Methodolgy for the evaluation of cryptocurrency systems
+## Python3 - NetworkX – BigQuery - SigmaJS smart contract analysis tool. An easy to use, simple framework to navigate ERC20 and other smart contracts in Ethereum (working on a BTC implementation) using network analysis, a network based blockchain navigator.
 
 This implementation uses NetworkX: https://github.com/networkx/networkx, Pandas, Maplotlib, SigmaJS and Python-Louvain for simple community arranging. **Some work is missing, but this can already produce interesting network analyses** 
+
+Please donate some BTC to support the project: **1DbTky3KKfY5aShvHy4mrsSzHQZhsPr3zK**
+
+![Donate](assets/donate.jpg)
 
 ## Motivation
 Due to the public nature of transaction data on blockchain based financial systems, it is possible to model these systems as a network and analyze its structure to provide and define whether the different variables that emerge in the transaction history of ERC20 tokens can be used to correlate the health of the system and therefore propose a risk coefficient that quantifies how active the token is, how distributed it is and infer how likely it is to respond to contagion and how stable the price is.
@@ -19,9 +23,19 @@ vagrant ssh
 $ cd /vagrant/
 $ python3.6 # To run a console
 ```
-### SQL Legacy
 
-If you need a local database, it is called "mydb", to load psql console type:
+Instantiate SQL tables in a python console.
+
+```
+from schema.DBManager import DBManager
+db = DBManager()
+db.create_searches_table()
+```
+
+### SQL Search Persistence
+
+Searches are persisted by default in "searches" table that you instantiated. You can do other things if you need to, the db is called "mydb", to load psql console type:
+
 ```
 psql -d mydb
 ```
