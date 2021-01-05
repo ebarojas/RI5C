@@ -1,6 +1,6 @@
 
-# RI5C: Smart Contract Analysis Tool
-## Python3 - NetworkX – BigQuery - SigmaJS implementation of an easy to use, simple framework to navigate smart contracts in Ethereum using network analysis, a network based blockchain navigator.
+# RI5C: Methodolgy for the evaluation of cryptocurrency systems
+## Python3 - NetworkX – BigQuery - SigmaJS smart contract analysis tool. An easy to use, simple framework to navigate ERC20 and other smart contracts in Ethereum (working on a BTC implementation) using network analysis, a network based blockchain navigator.
 
 This implementation uses NetworkX: https://github.com/networkx/networkx, Pandas, Maplotlib, SigmaJS and Python-Louvain for simple community arranging. **Some work is missing, but this can already produce interesting network analyses** 
 
