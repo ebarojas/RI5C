@@ -1,5 +1,5 @@
 ---
-title: 'RI5C: Methodolgy for the Evaluation of Cryptocurrency Systems'
+title: 'RI5C: A Visual Blockchain Navigator'
 tags:
   - Cryptocurrency
   - Network
@@ -9,32 +9,28 @@ tags:
 authors:
   - name: Everardo J. Barojas-Méndez
     orcid: 0000-0003-4182-1537
-    affiliation: 2
+    affiliation: 1
   - name: Fernando Ramírez Alatriste
     orcid: 0000-0001-7991-7951
-    affiliation: 4
-  - name: María Saiz Santos
     affiliation: 3
-  - name: Abdolreza Rashnavady Nodjoumi
+  - name: María Saiz Santos
     affiliation: 2
+  - name: Abdolreza Rashnavady Nodjoumi
+    affiliation: 1
 affiliations:
  - name: Universidad Nacional Autónoma de México
-   index: 2
+   index: 1
  - name: Universidad de País Vasco
-   index: 3
+   index: 2
  - name: Universidad Autónoma de la Ciudad de México
-   index: 4
+   index: 3
 date: 28 December 2020
 bibliography: paper.bib
 
-# Optional fields if submitting to a AAS journal too, see this blog post:
-# https://blog.joss.theoj.org/2018/12/a-new-collaboration-with-aas-publishing
-aas-doi: 10.3847/xxxxx <- update this with the DOI from AAS once you know it.
-aas-journal: Astrophysical Journal <- The name of the AAS journal.
 ---
 
 # Summary
-Close to twelve years after the genesis of Bitcoin, the first decentralised digital asset enabled by cryptography ^[i.e., Cryptocurrency] a whole new category of financial assets has emerged. One of the key differentiators of this newfound ecosystem is the introduction of a new issuance method for digital assets that takes place on decentralised networks like Bitcoin or Ethereum, where any individual with technical knowhow can create a new digital asset and sell it to investors, that can buy or liquidate these assets in secondary markets. Understanding these new digital assets, whose data is usually publically accessible as plain-text, requires data analysis and visualisation tools.
+Close to twelve years after the genesis of Bitcoin [@bitcoin_nak], the first decentralised digital asset enabled by cryptography ^[i.e., What is now generally referred to as "cryptocurrency"] a new category of financial assets has emerged. One of the key differentiators of this new category is the introduction of a new issuance method for these digital assets that takes place on decentralised networks like Bitcoin or Ethereum. Inside of these networks any individual with technical know-how can create a new digital asset and sell it to investors via a private or public offering, furthermore these investors can trade these assets in highly liquid 24hr secondary markets. Fully understanding the behaviour of these new digital assets whose data is persisted in a public ledger colloquially known as a "Blockchain" and accessible as plain-text via public APIs requires data analysis and visualisation tools.
 
 <!-- ABSTRACT 
 
@@ -42,9 +38,9 @@ Poco más de 10 años después de la génesis de Bitcoin, el primer activo digit
 
 # Statement of need
 
-`RI5C` is an interactive blockchain explorer web app that allows users to input a smart contract and visualise the network of internal transactions. It is written in Python which allows for web-serving application, data-analysis and treatment. It was designed to be used via a www.ri5c.com but it's components are modular enough that users can download the code and customise queries, graphs and networks. `RI5C` relies heavily on Google's Big Query Ethereum daily clones.
+`RI5C` is an interactive blockchain explorer packaged as a web-application that allows users to visualise a network model of a subset of transactions on the Ethereum Blockchain, which is filtered by smart-contract addresses that represent a cryptocurrency. It is written in Python which allows for data collection, analysis and treatment as well as an easy web serving application. The first layer of interaction was designed to be used via www.ri5c.com [@ri5c] but its components are modular enough that users can clone the code and customise queries, graphs and networks. `RI5C` relies heavily on Google's Big Query Ethereum daily clones.
 
-`RI5C` was designed to be used by developers, students, authorities and investors to further understand the behaviour of cryptocurrencies. It was the result of a PhD Thesis [cite PhD]. The visualisation capacities, ease and speed of use to non-technical users has aided in the understanding of these complex systems by a great number of people. `RI5C` has already processed thousands of network models through its web app www.ri5c.com.
+`RI5C` was designed to be used by developers, students, authorities and investors to further understand the behaviour of cryptocurrencies. It was the result of a PhD Thesis [@ri5c_phd:2020]. The visualisation capacities, ease and speed of use to non-technical users has aided in the understanding of these complex systems by a great number of people. `RI5C` has already processed queries for thousands of users through its web-application [@ri5c].
 
 <!-- 
 # Citations
