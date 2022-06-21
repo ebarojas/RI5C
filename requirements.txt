@@ -30,7 +30,7 @@ pyparsing==2.3.0
 subprocess32==3.5.3
 
 # Data science
-numpy==1.15.2
+numpy==1.22.0
 pandas==0.23.4
 python-dateutil==2.7.3
 
