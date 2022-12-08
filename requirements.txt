@@ -35,7 +35,7 @@ pandas==0.23.4
 python-dateutil==2.7.3
 
 # Google Cloud Big query
-certifi==2018.8.24
+certifi==2022.12.7
 chardet==3.0.4
 google-api-core==1.4.1
 google-cloud-bigquery==1.5.1
