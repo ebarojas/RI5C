@@ -1,6 +1,9 @@
 import json
+import re
 import datetime
 from tornado.web import RequestHandler
+
+ETH_ADDRESS_RE = re.compile(r'^0x[0-9a-fA-F]{40}$')
 # Contract generation
 from ri5c.get_contract import get_contract, create_graph, generate_sigma_network
 # To persist searches
@@ -23,7 +26,12 @@ class GraphView(RequestHandler):
         self.render("show_graph.html", data=json.dumps(data), graph_data=graph_data)
 
     def post(self):
-        contract = self.get_argument('contract')
+        contract = self.get_argument('contract', '').strip()
+
+        if not ETH_ADDRESS_RE.match(contract):
+            self.set_status(400)
+            self.finish("Invalid contract address.")
+            return
 
         # Get stuff
         contract_data = get_contract(contract, 2000)
