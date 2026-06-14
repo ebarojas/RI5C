@@ -41,8 +41,7 @@
 
 <!-- Draw graph using sigma.js -->
 <script>
-  var text = '{% raw data %}';
-  var obj = JSON.parse(text);
+  var obj = {% raw data %};
 
   s = new sigma({
     graph: obj,
