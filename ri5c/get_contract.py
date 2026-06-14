@@ -34,7 +34,7 @@ def get_contract(contract_address, limit=1000):
         SELECT
           *
         FROM
-          `bigquery-public-data.ethereum_blockchain.token_transfers`
+          `bigquery-public-data.crypto_ethereum.token_transfers`
         WHERE
           token_address='%s'
         ORDER BY
@@ -86,9 +86,8 @@ def create_graph(contract):
     G = nx.Graph()
     # Pandas dataframe TODO: this method should be extracted
     sorted_list = [u'token_address', u'from_address',  u'to_address', u'value', u'transaction_hash', u'log_index' ,u'block_timestamp', u'block_number', u'block_hash']
-    data=[list(x.values()) for x in contract]
-
-    df = pd.DataFrame(data=data, columns=sorted_list)
+    df = pd.DataFrame([dict(row) for row in contract])
+    df = df[sorted_list]
 
     G = nx.from_pandas_edgelist(df, source='from_address', target='to_address', edge_attr=["value", "transaction_hash"])
 
@@ -111,7 +110,7 @@ def create_graph_new(contract):
     G = nx.Graph()
     # Pandas dataframe
 
-    df = pd.DataFrame(data=[list(x.values()) for x in contract], columns=list(contract[0].keys()))
+    df = pd.DataFrame([dict(row) for row in contract])
     # Graph
 
     G = nx.from_pandas_edgelist(df, source='from_address', target='to_address', edge_attr="value")

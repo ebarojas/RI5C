@@ -33,14 +33,16 @@ pandas==2.1.4
 python-dateutil==2.8.2
 
 # Google Cloud Big query
-certifi==2018.8.24
+certifi==2024.2.2
 chardet==3.0.4
-google-api-core==1.4.1
-google-cloud-bigquery==1.5.1
-google-cloud-core==0.28.1
-google-resumable-media==0.3.1
-googleapis-common-protos==1.5.3
-protobuf==3.20.3
-requests==2.20.0
+google-api-core==2.19.1
+google-auth==2.29.0
+google-cloud-bigquery==3.25.0
+google-cloud-core==2.4.1
+google-resumable-media==2.7.2
+googleapis-common-protos==1.63.2
+protobuf==4.25.4
+pyarrow==16.1.0
+requests==2.32.3
 setuptools==68.0.0
-urllib3==1.24.2
+urllib3==2.2.2
