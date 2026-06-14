@@ -26,6 +26,10 @@ class GraphView(RequestHandler):
         self.render("show_graph.html", data=json.dumps(data), graph_data=graph_data)
 
     def post(self):
+        self.set_status(503)
+        self.finish("temporarilly unavailable.")
+        return
+
         contract = self.get_argument('contract', '').strip()
 
         if not ETH_ADDRESS_RE.match(contract):

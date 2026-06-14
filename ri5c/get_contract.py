@@ -45,11 +45,10 @@ def get_contract(contract_address, limit=1000):
     """ % (contract_address, limit)
 
     # === Generate credentials and connect to BigQuery
-    # Read env data and get JSON data from production level var
-    set_googlebq_credentials()
+    credentials = set_googlebq_credentials()
 
     # Instantiate BigQuery
-    bql = bigquery.Client()
+    bql = bigquery.Client(credentials=credentials) if credentials else bigquery.Client()
 
     # Query
     query_job = bql.query(test_query)
@@ -67,17 +66,11 @@ def set_googlebq_credentials():
     '''
     production = settings.PRODUCTION
     if production == False:
-        return False
+        return None
 
-    # Read env data and get JSON data from production level var
     credentials_raw = os.environ.get('GOOGLE_APPLICATION_DATA')
-    # save to JSON
     data = json.loads(credentials_raw)
-    # Write data to temporary json file
-    with open('data.json', 'w') as outfile:
-        json.dump(data, outfile)
-
-    return True
+    return service_account.Credentials.from_service_account_info(data)
 
 
 def create_graph(contract):
